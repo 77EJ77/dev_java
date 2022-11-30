@@ -1,4 +1,4 @@
-package com.ch01;
+package app.src.com.ch01;
 
 public class Hello {
 
@@ -7,4 +7,3 @@ public class Hello {
 	}
 
 }
- 
