@@ -1,4 +1,4 @@
-package app.src.main.java.dev_java.ch01;
+package dev_java.ch01;
 
 class Param {
   int ival;

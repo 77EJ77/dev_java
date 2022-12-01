@@ -1,4 +1,4 @@
-package app.src.main.java.dev_java.ch01;
+package dev_java.ch01;
 //static은 변수 앞에 메소드 앞에 올 수 있다.
 
 //static이 있으면 정적변수, 정적 메소드라 한다.
