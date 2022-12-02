@@ -25,6 +25,7 @@ public class String1 {
     System.out.println(s3 == s4);
 
     // 만일 s3이 가리키는 문자열이 s4와 같은지를 비교하려면 어떡하지? 구글링해서 확인해보기
-    System.out.println(s3.compareTo(s4));
+    // System.out.println(s3.compareTo(s4));
+    System.out.println(s3.equals(s4));
   }
 }
