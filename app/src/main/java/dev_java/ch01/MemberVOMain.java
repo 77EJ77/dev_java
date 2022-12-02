@@ -14,6 +14,12 @@ public class MemberVOMain {
     // mem_name의 경우 접근제한자를 public으로 했으므로 직접 초기화가 가능하다.
     memVO.setMember_id("tomato");
     // String name
-
+    memVO.setMember_name("user_id");// setter메소드를 호출하는 것만으로 초기화됨.
+    System.out.println(memVO.getMem_name());
+    // 아래와 같이 setter메소드를 호출하면 전역변수인 mem_pw에 pw가 초기화됨
+    memVO.setMember_pw("pw");
+    // getter메소드를 호출하면 전변인 mem_pw에 저장된 값이 출력됨.
+    // 만일 setter메소드를 호출하지 않으면 null출력될 것임. - 주의할 것.
+    System.out.println(memVO.getMem_pw());
   }
 }
