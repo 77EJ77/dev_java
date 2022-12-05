@@ -15,11 +15,15 @@ public class P1205_3 {
   public void print() {
     int num1 = 1;
     int num2 = 1;
+    int sum;
     int count = 10;
-    for (int i = 0; i < count; i++) {
-      num2 += num1;
-
-      System.out.println("a" + i + ": " + num2);
+    System.out.println("a1: " + num1);
+    System.out.println("a2: " + num2);
+    for (int i = 3; i <= count; i++) {
+      sum = num1 + num2;
+      num1 = num2;
+      num2 = sum;
+      System.out.println("a" + i + ": " + sum);
     }
   }
 }
