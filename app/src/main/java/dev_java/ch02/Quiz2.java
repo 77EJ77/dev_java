@@ -1,6 +1,6 @@
-package dev_java.study_01;
+package dev_java.ch02;
 
-public class Quiz1 {
+public class Quiz2 {
   public static void main(String[] args) {
     // 합을 담을 변수 선언
     // 0으로 초기화 하는 이유는 답에 영향을 주면 안되니까..
@@ -9,9 +9,10 @@ public class Quiz1 {
     int cnt;
     cnt = 1;
     // for(초기화; 조건식; 증감연산자){}
-    for (; cnt <= 3; cnt = cnt + 1) {
+    // 너 짝수니?
+    if (cnt % 2 == 1) {
       tot = tot + cnt;// 1
-      System.out.println("tot : " + tot + ", cnt : " + cnt);
     }
+    System.out.printf("tot : %d, cnt : %d %n", tot, cnt);
   }
 }

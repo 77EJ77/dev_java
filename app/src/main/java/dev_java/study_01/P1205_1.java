@@ -3,6 +3,18 @@ package dev_java.study_01;
 import java.util.Scanner;
 
 public class P1205_1 {
+  /**
+   * 2022년 12월 5일 연습문제
+   * 문제 1
+   * 1부터 10까지의 합을 구하는 프로그램을 작성하시오.
+   * 문제 2
+   * 1부터 10까지 세면서 짝수의 합을 구하는 프로그램을 작성하시오.
+   * 문제 3
+   * 1부터 100까지 세면서 5의 배수이면 fizz를 출력하고
+   * 7의 배수이면 buzz를 출력하고
+   * 5와 7의 공배수이면 fizzbuzz를 출력하고
+   * 나머지는 숫자를 출력하는 프로그램을 작성하시오.
+   */
   public static void main(String[] args) {
     P1205_1 p1205 = new P1205_1();
     p1205.mma();
@@ -83,6 +95,31 @@ public class P1205_1 {
       else
         System.out.println(i);
     }
+    // swtich로 하는 것,, 신박한 방법이 있나해서 따라하다가 관둠.
+    // 그다지 신박하지 않았다....
+    // for (int i = 1; i < 101; i++) {
+    // switch (i % 35) {
+    // case 0:
+    // System.out.println("fizzbuzz");
+    // break;
+    // case 5:
+    // case 10:
+    // case 15:
+    // case 20:
+    // case 25:
+    // case 30:
+    // System.out.println("fizz");
+    // break;
+    // case 7:
+    // case 14:
+    // case 21:
+    // case 28:
+    // System.out.println("buzz");
+    // break;
+    // default:
+    // System.out.println(i);
+    // }
+    // }
   }
 
   /**
