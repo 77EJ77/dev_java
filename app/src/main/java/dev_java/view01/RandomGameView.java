@@ -29,7 +29,6 @@ public class RandomGameView implements ActionListener/* , FocusListener */ {
     // jf = new JFrame();
     System.out.println("initDisplay 호출");
     jtf_input.requestFocus();
-    jtf_input.setFocusable(true);
     jtf_input.addActionListener(this);
     jta_display.setEditable(false);
     jf.add("South", jtf_input);
@@ -52,7 +51,6 @@ public class RandomGameView implements ActionListener/* , FocusListener */ {
       jta_display.append(jtf_input.getText() + "\n");
       jta_display.setCaretPosition(jta_display.getDocument().getLength());
       jtf_input.setText("");// 지우기는 더블퀘테이션으로 대체
-
     }
   }
 }
