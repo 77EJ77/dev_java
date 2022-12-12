@@ -1,32 +1,37 @@
-package dev_java1.sungjuk;
+package dev_java.study_02;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class JTextAreaUI2 implements ActionListener {
+public class JTextAreaUI2 {
    // 선언부
    JTextAreaUILogic2 jtaUILogic = new JTextAreaUILogic2(this);
+   JTextAreaUI2Event jEvent = new JTextAreaUI2Event(this);
    JFrame jf = new JFrame();
-   JTextArea jta = new JTextArea(10, 20);
+   JTextArea jta = null;
+   JScrollPane jsp = null;
    JTextField jtf = new JTextField(10);
 
    public JTextAreaUI2() {
+      getTextArea();// ***
       initDisplay();
    }
-   public JTextArea getTextArea(){
+
+   public JTextArea getTextArea() {
+      if (jta == null) {// 싱글톤 어쩌고
+         jta = new JTextArea(10, 20);
+         jsp = new JScrollPane(jta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+      }
       return jta;
    }
 
    public void initDisplay() {
-      jtf.addActionListener(this);
-      jta.setBackground(Color.cyan);
-      jf.add("Center", jta);
+      jtf.addActionListener(jEvent);
+      jta.setBackground(Color.LIGHT_GRAY);
+      jf.add("Center", jsp);
       jf.add("South", jtf);
       jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       jf.setSize(400, 300);
@@ -35,15 +40,5 @@ public class JTextAreaUI2 implements ActionListener {
 
    public static void main(String[] args) {
       new JTextAreaUI2();
-   }
-
-   @Override
-   public void actionPerformed(ActionEvent e) {
-      Object obj = e.getSource();
-      if (jtf == obj) {
-         String input = jtf.getText();
-         jtaUILogic.account(input);
-         jtf.setText("");
-      }
    }
 }

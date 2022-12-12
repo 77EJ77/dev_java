@@ -40,6 +40,7 @@ public class P1212_1 {
       System.out.println("2. 연습문제2");
       System.out.println("3. 연습문제3");
       System.out.println("4. 연습문제4");
+      System.out.println("5. 종료");
       System.out.println("====================");
       System.out.print("번호를 입력하세요 : ");
       try {
@@ -59,6 +60,9 @@ public class P1212_1 {
           break;
         case 4:
           num4();
+          break;
+        case 5:
+          flag = false;
           break;
         default:
           System.out.println("잘못 입력하셨습니다.");

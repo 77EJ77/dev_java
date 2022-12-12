@@ -1,16 +1,16 @@
-package dev_java1.sungjuk;
+package dev_java.study_02;
 
 public class StudentVO {
    private String name;
-   private String subjects[] = {"Java", "Oracle","Spring"};
+   private String subjects[] = { "Java", "Oracle", "Spring" };
 
-	public String[] getSubjects() {
-		return this.subjects;
-	}
+   public String[] getSubjects() {
+      return this.subjects;
+   }
 
-	public void setSubjects(String subjects[]) {
-		this.subjects = subjects;
-	}
+   public void setSubjects(String subjects[]) {
+      this.subjects = subjects;
+   }
 
    private int tot;
    private double avg;
@@ -39,7 +39,7 @@ public class StudentVO {
       this.avg = avg;
    }
 
-   public class GradeVO{
+   public class GradeVO {
       private int scoreJava;
       private int scoreOracle;
       private int scoreSpring;
