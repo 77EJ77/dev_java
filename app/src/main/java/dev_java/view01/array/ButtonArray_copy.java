@@ -79,6 +79,7 @@ public class ButtonArray_copy implements ActionListener {
       jtf_input.setText("");
     } else if (jbtns[0] == obj) {// 새 게임 하려고? // 주소번지를 비교하는 것이기 때문에 equals쓰면 XXXX
       jta_display.append("~(´･ω･`)?새 게임을 시작합니다~\n");
+      AccountSample as = new AccountSample();
     } else if (jbtns[1] == obj) {// 정답 볼래?
       jta_display.append("＼（〇_ｏ）／정답은 ???입니다.\n");
     } else if (jbtns[2] == obj) {// 화면 좀 지워줘
