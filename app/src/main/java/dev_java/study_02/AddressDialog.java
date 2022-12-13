@@ -6,13 +6,17 @@ public class AddressDialog {
   JDialog jdg = new JDialog();
 
   public AddressDialog() {
-    jdg.setTitle("");// 입력/수정/상세보기
+    initDisPlay();
+  }
+
+  public void initDisPlay() {
     jdg.setSize(400, 300);
     jdg.setVisible(false);
+
   }
 
-  public static void main(String[] args) {
-    new AddressDialog();
+  public void setDialog(String title, boolean isView) {
+    jdg.setTitle(title);
+    jdg.setVisible(isView);
   }
-
 }
