@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+//가비지 컬렉터(청소부), Candidate상태, System.gc();//쓰레기값 치워주세요
 public class JFrameRepaint extends JFrame implements ActionListener {
 
   JPanel jp = new JPanel();
