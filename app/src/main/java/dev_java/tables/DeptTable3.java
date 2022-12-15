@@ -116,18 +116,14 @@ public class DeptTable3 extends JFrame implements ActionListener { // DeptTable1
       Integer deptno = Integer.parseInt((String) dtm_dept.getValueAt(index, 0));
       System.out.println(deptno);
 
-      dtm_dept.setNumRows(0);
-      String[][] sample = new String[3][3];
-      // String[][] sample = jt.get;
-      for (int i = 0; i < sample.length; i++) {
-        Vector<String> oneRow = new Vector<>();
-        for (int j = 0; j < sample[i].length; j++) {
-          if (i != index)
-            oneRow.add(sample[i][j]);
-        }
-        if (i != index)
-          dtm_dept.addRow(oneRow);
-      }
+      // dtm_dept.setNumRows(0);
+      // String[][] sample = new String[3][3];
+
+      // for (int i = 0; i < depts.length; i++) {
+      // sample[i] = depts[i].clone();
+      // }
+      // setData(sample);
+      dtm_dept.removeRow(index);
     }
   }
 }
