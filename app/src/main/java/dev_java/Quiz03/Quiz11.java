@@ -1,4 +1,4 @@
-package dev_java.Quiz1215;
+package dev_java.Quiz03;
 
 import java.util.Arrays;
 import java.util.Scanner;
