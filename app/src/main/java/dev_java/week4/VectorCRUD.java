@@ -57,20 +57,26 @@ public class VectorCRUD {
     // if (isOk)
     // result = 1;
     String[] oneRow = null;
-    for (int i = 0; i < vdept.size(); i++) {
+    here: for (int i = 0; i < vdept.size(); i++) {
       String row[] = vdept.get(i);
       for (int j = 0; j < row.length; j++) { // String[]돌림
         if (oneRow[0].equals(row[0])) {
           String[] updRow = { oneRow[0], str[1], str[2] };
-          vdept.remove(i);
-          vdept.add(i, updRow);
-          break;
+          // 수정이라 말하고 입력으로 처리함 - 한 셀씩 수정하는 것
+          vdept.remove(i);// i번째 자리를 삭제하고
+          // Vector를 사용하면 배열의 모든 단점을 보완함 - 고정, 타입단점
+          // Vector<Object>
+          vdept.add(i, updRow);// 삭제된 자리에 추가함 - 배열의 장애 - int i[] = new int[3];
+          vdept.set(index, updRow);
+          // break문만 사용시 이중 for문에서 내부for문만을 탈출하게 되는데 여기서는 외부 for문을 빠져나가야 하므로 라벨문을 붙여서 처리함
+          break here;
         } else {
           System.out.println("선택한 부서번호와 벡터에서 가져온 부서번호가 다르다.");
         }
 
       }
     }
+    getDeptList();
     return result;
   }
 
