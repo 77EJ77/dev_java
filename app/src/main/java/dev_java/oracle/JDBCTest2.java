@@ -2,7 +2,7 @@ package dev_java.oracle;
 
 import java.sql.Connection;
 
-import dev_java.util1.DBConnectionMgr;
+import dev_java.util.DBConnectionMgr;
 
 /*
  * 변수 이름 앞에 final이 붙으면 상수가 됨.
