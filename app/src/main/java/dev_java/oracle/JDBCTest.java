@@ -14,7 +14,7 @@ public class JDBCTest {
 	// 물리적으로 떨어져 있는 오라클 서버에 URL정보 추가
 	// 오라클 제품에서는 물리적으로 떨어져있는 서버에 접속하는 방식으로 thin방식과 oci방식 지원. 멀티티어, 환경에서는 thin방식이다.
 	// 서버의 DNS, 포트번호-1521, SID이름-물리적인저장소를 참조할수 있는이름
-	public static final String _URL = "jdbc:oracle:thin:@192.168.10.68:1521:orcl11";
+	public static final String _URL = "jdbc:oracle:thin:@localhost:1521:orcl11";
 	public static String _USER = "hr";
 	public static String _PW = "tiger";
 	// 물리적으로 떨어져 있는 오라클 서버와 연결통로를 만들 때 사용
