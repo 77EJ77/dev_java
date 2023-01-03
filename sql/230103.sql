@@ -84,67 +84,185 @@ SELECT emp_id as "사번", emp_name as "성명" FROM temp;
 SELECT emp_id, emp_name, lev FROM temp ORDER BY step asc, emp_id desc;
 
 
-CREATE TABLE HR.TEMP
-(
-  EMP_ID      NUMBER                            NOT NULL,
-  EMP_NAME    VARCHAR2(10 BYTE)                 NOT NULL,
-  BIRTH_DATE  DATE,
-  DEPT_CODE   VARCHAR2(6 BYTE)                  NOT NULL,
-  EMP_TYPE    VARCHAR2(4 BYTE),
-  USE_YN      VARCHAR2(1 BYTE)                  NOT NULL,
-  TEL         VARCHAR2(15 BYTE),
-  HOBBY       VARCHAR2(30 BYTE),
-  SALARY      NUMBER,
-  LEV         VARCHAR2(4 BYTE),
-  STEP        NUMBER(5)
-)
-TABLESPACE USERS
-PCTUSED    0
-PCTFREE    10
-INITRANS   1
-MAXTRANS   255
-STORAGE    (
-            INITIAL          64K
-            NEXT             1M
-            MINEXTENTS       1
-            MAXEXTENTS       UNLIMITED
-            PCTINCREASE      0
-            BUFFER_POOL      DEFAULT
-           )
-LOGGING 
-NOCOMPRESS 
-NOCACHE
-NOPARALLEL
-MONITORING;
-?
-?
---  There is no statement for index HR.SYS_C0011993.
---  The object is created when the parent object is created.
-?
-ALTER TABLE HR.TEMP ADD (
-  PRIMARY KEY
-  (EMP_ID)
-  USING INDEX
-    TABLESPACE USERS
-    PCTFREE    10
-    INITRANS   2
-    MAXTRANS   255
-    STORAGE    (
-                INITIAL          64K
-                NEXT             1M
-                MINEXTENTS       1
-                MAXEXTENTS       UNLIMITED
-                PCTINCREASE      0
-                BUFFER_POOL      DEFAULT
-               )
-  ENABLE VALIDATE);
-  
   
 SELECT 연산이 가능하다 FROM;
 
 SELECT 1+1, 500-300, 2*5, 5/2
   FROM TEMP;
+
+SELECT * FROM t_letitbe;
+
+SELECT MOD(5,2), MOD(6,2), MOD(120,2) FROM dual;
+
+SELECT seq_vc
+  FROM t_letitbe
+ ORDER BY to_number(seq_vc) asc;
+
+SELECT words_vc
+  FROM t_letitbe
+ WHERE MOD(seq_vc,2)=0;
+ 
+ SELECT words_vc
+  FROM t_letitbe
+ WHERE MOD(seq_vc,2)=1;
+ 
+-- 오라클에서 형변환함수가 있다.
+-- to_char() 날짜 -> 문자, 숫자 -> 문자
+-- to_number(문자) -> 숫자
+
+--함수(파라미터1, 파라미터2)
+--함수는 리턴값이 있다.함수는 파라미터를 맞춰야 한다.갯수와 타입 모두를 맞춰야한다.
+
+SELECT MOD(to_number(seq_vc), 2) as "no" FROM t_letitbe;
+
+-- 조건절에 사용하는 컬럼은 반드시 집합에 있는 컬럼명만 가능하다.
+
+-- 인라인뷰
+SELECT
+        no
+  FROM (
+          SELECT MOD(seq_vc, 2) no
+          FROM t_letitbe
+       )
+ WHERE no = 1;
+
+
+SELECT
+        ename, sal
+  FROM emp;
+-- DECODE문 검색
+-- 크다작다X ifX 오로지 같다만 가능
+SELECT
+        DECODE(job, 'CLERK', sal, null)
+  FROM emp;
   
-SELECT * FROM DBA_USERS;
+SELECT
+         DECODE(job, 'CLERK', sal, null)
+        ,DECODE(job, 'SALESMAN', sal, null)
+  FROM emp;
+
+SELECT
+         SUM(DECODE(job, 'CLERK', sal, null))
+        ,SUM(DECODE(job, 'SALESMAN', sal, null))
+        ,SUM(DECODE(job, 'CLERK', null, 'SALESMAN', sal))
+  FROM emp;
+  
+  
+SELECT deptno, DECODE(deptno, 10 , 'ACCOUNTING' ,
+                              20 , 'RESEARCH' ,
+                              30 , 'SALES', 'OPERATIONS') name
+  FROM dept;
+  
+  
+  
+SELECT deptno, DECODE(deptno, 10 , SUM(sal),
+                              20 , MAX(sal),
+                              30 , MIN(sal)) sal
+  FROM emp
+ GROUP BY deptno;
+ 
+-- Group by -> 
+SELECT AVG(sal) as "급여평균", SUM(sal) as "급여합계", COUNT(empno) as "사원수" FROM emp;
+
+SELECT AVG(sal) FROM emp;
 
 
+-- distinct -> 중복제거 함수
+SELECT distinct (deptno)
+  FROM emp;
+
+SELECT e.deptno, d.dname, SUM(e.sal) as "부서별 급여 총합" FROM emp e, dept d GROUP BY e.deptno, d.dname, e.sal;
+
+
+SELECT emp.deptno, SUM(sal) as "부서별 급여 총합" FROM emp , dept GROUP BY emp.deptno;
+
+SELECT deptno, ename
+  FROM emp
+GROUP BY deptno;
+
+SELECT deptno, MIN(ename)
+  FROM emp
+GROUP BY deptno;
+
+SELECT deptno, count(ename)
+  FROM emp
+  GROUP BY deptno;
+  
+SELECT DECODE(job, 'CLERK', sal, NULL)
+  FROM emp;
+  
+SELECT SUM(DECODE(job, 'CLERK', sal, NULL))
+  FROM emp;
+
+SELECT deptno, ename
+  FROM emp
+GROUP BY deptno, ename;
+
+
+-- 부서별로 급여 합계를 출력한다.
+SELECT deptno, NVL(SUM(DECODE(deptno, 10, sal), 0) deptno10),
+               NVL(SUM(DECODE(deptno, 20, sal), 0) deptno20),
+               NVL(SUM(DECODE(deptno, 30, sal), 0) deptno30),
+               NVL(SUM(DECODE(deptno, 40, sal), 0) deptno40)
+  FROM emp;
+  
+SELECT deptno, NVL(DECODE(deptno, 10, sal), 0) deptno10,
+               NVL(DECODE(deptno, 20, sal), 0) deptno20,
+               NVL(DECODE(deptno, 30, sal), 0) deptno30,
+               NVL(DECODE(deptno, 40, sal), 0) deptno40
+  FROM emp;
+  
+  
+SELECT deptno, 
+       CASE deptno
+         WHEN 10 THEN 'ACCOUNTING'
+         WHEN 20 THEN 'RESEARCH'
+         WHEN 30 THEN 'SALES'
+         ELSE 'OPERATIONS'
+       END as "Dept Name"
+  FROM dept;
+
+
+SELECT ename , sal,
+       CASE
+          WHEN sal < 1000  THEN sal+(sal*0.8)
+          WHEN sal BETWEEN 1000 AND 2000 THEN sal+(sal*0.5)
+          WHEN sal BETWEEN 2001 AND 3000 THEN sal+(sal*0.3)
+          ELSE sal+(sal*0.1)
+       END sal
+  FROM emp;
+  
+  
+-- 우리회사 직원중에 급여가 1000이상이고 3000이하인 직원들의 성명, 급여액을 출력하는 SQL문을 작성하시오.
+SELECT ename, sal FROM emp WHERE sal BETWEEN 1000 AND 3000;
+
+--존재하지 않으면 -1,존재하는데 일치하지 않으면 0  일치하면 1? 
+
+
+SELECT CASE WHEN mem_id=:id THEN 1
+       ELSE -1
+       END as result
+  FROM member;
+  
+  
+SELECT 
+        result
+  FROM (
+        SELECT CASE WHEN mem_id=:id THEN 1
+            ELSE -1
+            END as result
+        FROM member
+        )
+ORDER BY result desc;
+
+
+SELECT
+        result
+  FROM (
+        SELECT CASE WHEN mem_id=:id THEN 1
+               ELSE -1
+               END as result
+        FROM member
+        ORDER BY result desc
+        )
+ WHERE rownum=1;

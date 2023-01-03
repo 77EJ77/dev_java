@@ -1,4 +1,4 @@
-package main.java.dev_java.week5;
+package dev_java.week5;
 
 class StopThread implements Runnable {
   boolean stopped = false;
