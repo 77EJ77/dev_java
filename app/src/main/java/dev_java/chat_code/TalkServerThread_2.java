@@ -1,3 +1,5 @@
+package dev_java.chat_code;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;

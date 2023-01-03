@@ -2,22 +2,22 @@ SELECT deptno, dname, loc FROM dept;
 
 SELECT empno, ename, deptno FROM emp;
 
---SELECT ÄÃ·³¸í1, ÄÃ·³¸í2, COUNT(ÄÃ·³¸í3) FROM ÁýÇÕ1, ÁýÇÕ2, ... Ä«Å¸½Ã¾ÈÀÇ °ö -¹¯Áö¸¶ Á¶ÀÎ -ÀÏ¾î³¯ ¼ö ÀÖ´Â ¸ðµç °æ¿ìÀÇ ¼ö¸¦ ´Ù º¸¿©ÁÜ
+--SELECT ì»¬ëŸ¼ëª…1, ì»¬ëŸ¼ëª…2, COUNT(ì»¬ëŸ¼ëª…3) FROM ì§‘í•©1, ì§‘í•©2, ... ì¹´íƒ€ì‹œì•ˆì˜ ê³± -ë¬»ì§€ë§ˆ ì¡°ì¸ -ì¼ì–´ë‚  ìˆ˜ ìžˆëŠ” ëª¨ë“  ê²½ìš°ì˜ ìˆ˜ë¥¼ ë‹¤ ë³´ì—¬ì¤Œ
 
 SELECT empno, ename, deptno, dname 
   FROM emp, dept;
     
-SELECT empno FROM emp; --ÀÎµ¦½º´Â µðÆúÆ®°ªÀÌ ¿À¸§Â÷¼ø
+SELECT empno FROM emp; --ì¸ë±ìŠ¤ëŠ” ë””í´íŠ¸ê°’ì´ ì˜¤ë¦„ì°¨ìˆœ
 
-SELECT ename FROM emp ORDER BY ename asc;--µ¥ÀÌÅÍ 2Â÷°¡°ø
+SELECT ename FROM emp ORDER BY ename asc;--ë°ì´í„° 2ì°¨ê°€ê³µ
 
---ºÎÀûÇÕÇÑ ½Äº°ÀÚ / ¿­Á¤ÀÇ°¡ ¾Ö¸ÅÇÏ´Ù -> SQLException´ë»ó -> try-catch(){}ÇÊ¿ä
---ctrl+B -> ÁÖ¼®
---¿ÉÆ¼¸¶ÀÌÀú¿¡°Ô º¸³»´Â hint¹® Ãß°¡ÇÔ-> ±×³É--
+--ë¶€ì í•©í•œ ì‹ë³„ìž / ì—´ì •ì˜ê°€ ì• ë§¤í•˜ë‹¤ -> SQLExceptionëŒ€ìƒ -> try-catch(){}í•„ìš”
+--ctrl+B -> ì£¼ì„
+--ì˜µí‹°ë§ˆì´ì €ì—ê²Œ ë³´ë‚´ëŠ” hintë¬¸ ì¶”ê°€í•¨-> ê·¸ëƒ¥--
 
 
---¾çÂÊ Å×ÀÌºí¿¡ ¸ðµÎ Á¸ÀçÇÏ³ª ÀÎµ¦½ºÀÎ ÄÃ·³¸íÀ» ¾²´Â °ÍÀÌ ´õ ºü¸£´Ù
---Ä«Å¸½Ã¾ÈÀÇ °ö -¹¯Áö¸¶ Á¶ÀÎ -ÀÏ¾î³¯ ¼ö ÀÖ´Â ¸ðµç °æ¿ìÀÇ ¼ö¸¦ ´Ù º¸¿©ÁÜ
+--ì–‘ìª½ í…Œì´ë¸”ì— ëª¨ë‘ ì¡´ìž¬í•˜ë‚˜ ì¸ë±ìŠ¤ì¸ ì»¬ëŸ¼ëª…ì„ ì“°ëŠ” ê²ƒì´ ë” ë¹ ë¥´ë‹¤
+--ì¹´íƒ€ì‹œì•ˆì˜ ê³± -ë¬»ì§€ë§ˆ ì¡°ì¸ -ì¼ì–´ë‚  ìˆ˜ ìžˆëŠ” ëª¨ë“  ê²½ìš°ì˜ ìˆ˜ë¥¼ ë‹¤ ë³´ì—¬ì¤Œ
 SELECT empno, ename, dept.deptno, dname 
   FROM emp, dept;
 
@@ -31,32 +31,32 @@ SELECT empno, ename, dept.deptno, dname
  WHERE emp.deptno = dept.deptno
    AND emp.ename = 'SMITH';
 
---Á¶°ÇÀýÀ» »ç¿ëÇÏ¸é °æ¿ìÀÇ ¼ö°¡ ÁÙ¾îµç´Ù(±×·¯´Ï±î °Ë»ö ¼Óµµ´Â Áõ°¡ÇÔ)
---AND - ±³ÁýÇÕ - Æ©ÇÃÀÇ ¼ö´Â ÁÙ¾îµç´Ù.
---OR - ÇÕÁýÇÕ - Æ©ÇÃÀÇ ¼ö´Â Áõ°¡ÇÑ´Ù.
+--ì¡°ê±´ì ˆì„ ì‚¬ìš©í•˜ë©´ ê²½ìš°ì˜ ìˆ˜ê°€ ì¤„ì–´ë“ ë‹¤(ê·¸ëŸ¬ë‹ˆê¹Œ ê²€ìƒ‰ ì†ë„ëŠ” ì¦ê°€í•¨)
+--AND - êµì§‘í•© - íŠœí”Œì˜ ìˆ˜ëŠ” ì¤„ì–´ë“ ë‹¤.
+--OR - í•©ì§‘í•© - íŠœí”Œì˜ ìˆ˜ëŠ” ì¦ê°€í•œë‹¤.
 
 
---1.1.¿ù ±Þ¿©´Â ¿¬ºÀÀ» 18·Î ³ª´©¾î È¦¼ö ´Þ¿¡´Â ¿¬ºÀÀÇ 1/18ÀÌ Áö±ÞµÇ°í, Â¦¼ö´Þ¿¡´Â ¿¬ºÀÀÇ 2/18°¡ Áö±ÞµÈ´Ù°í °¡Á¤ÇßÀ» ¶§ È¦¼ö ´Þ°ú Â¦¼ö ´Þ¿¡ ¹ÞÀ» ±Ý¾×À» ³ªÅ¸³»½Ã¿À.
+--1.1.ì›” ê¸‰ì—¬ëŠ” ì—°ë´‰ì„ 18ë¡œ ë‚˜ëˆ„ì–´ í™€ìˆ˜ ë‹¬ì—ëŠ” ì—°ë´‰ì˜ 1/18ì´ ì§€ê¸‰ë˜ê³ , ì§ìˆ˜ë‹¬ì—ëŠ” ì—°ë´‰ì˜ 2/18ê°€ ì§€ê¸‰ëœë‹¤ê³  ê°€ì •í–ˆì„ ë•Œ í™€ìˆ˜ ë‹¬ê³¼ ì§ìˆ˜ ë‹¬ì— ë°›ì„ ê¸ˆì•¡ì„ ë‚˜íƒ€ë‚´ì‹œì˜¤.
 SELECT emp_name, ROUND(salary/18), ROUND((salary*2)/18) FROM temp;
 
 SELECT emp_name
-     , to_char((ROUND(salary/18, -1)), '999,999,999')||'¿ø'
-     , to_char((ROUND((salary*2)/18, -1)), '999,999,999')||'¿ø'
+     , to_char((ROUND(salary/18, -1)), '999,999,999')||'ì›'
+     , to_char((ROUND((salary*2)/18, -1)), '999,999,999')||'ì›'
   FROM temp;
   
-SELECT emp_name as "»ç¿ø¸í"
-     , to_char((ROUND(salary/18, -1)), '999,999,999')||'¿ø' as "È¦¼ö´Þ"
-     , to_char((ROUND((salary*2)/18, -1)), '999,999,999')||'¿ø' as "Â¦¼ö´Þ"
+SELECT emp_name as "ì‚¬ì›ëª…"
+     , to_char((ROUND(salary/18, -1)), '999,999,999')||'ì›' as "í™€ìˆ˜ë‹¬"
+     , to_char((ROUND((salary*2)/18, -1)), '999,999,999')||'ì›' as "ì§ìˆ˜ë‹¬"
   FROM temp;
 
---2.À§¿¡¼­ ±¸ÇÑ ¿ù ±Þ¿©¿¡ ±³Åëºñ°¡ 10¸¸¿ø¾¿ Áö±ÞµÈ´Ù¸é(Â¦¼ö´ÞÀº 20¸¸¿ø)À§ÀÇ ¹®ÀåÀÌ
---¾î¶»°Ô ¹Ù²ðÁö ÀÛ¼ºÇØ º¸½Ã¿À.
-SELECT emp_name as "»ç¿ø¸í"
-     , to_char((ROUND(salary/18, -1))+100000, '999,999,999')||'¿ø' as "È¦¼ö´Þ"
-     , to_char((ROUND((salary*2)/18, -1))+200000, '999,999,999')||'¿ø' as "Â¦¼ö´Þ"
+--2.ìœ„ì—ì„œ êµ¬í•œ ì›” ê¸‰ì—¬ì— êµí†µë¹„ê°€ 10ë§Œì›ì”© ì§€ê¸‰ëœë‹¤ë©´(ì§ìˆ˜ë‹¬ì€ 20ë§Œì›)ìœ„ì˜ ë¬¸ìž¥ì´
+--ì–´ë–»ê²Œ ë°”ë€”ì§€ ìž‘ì„±í•´ ë³´ì‹œì˜¤.
+SELECT emp_name as "ì‚¬ì›ëª…"
+     , to_char((ROUND(salary/18, -1))+100000, '999,999,999')||'ì›' as "í™€ìˆ˜ë‹¬"
+     , to_char((ROUND((salary*2)/18, -1))+200000, '999,999,999')||'ì›' as "ì§ìˆ˜ë‹¬"
   FROM temp;
 
---3.TEMP Å×ÀÌºí¿¡¼­ Ãë¹Ì°¡ NULL ÀÌ ¾Æ´Ñ »ç¶÷ÀÇ ¼º¸íÀ» ÀÐ¾î¿À½Ã¿À.
+--3.TEMP í…Œì´ë¸”ì—ì„œ ì·¨ë¯¸ê°€ NULL ì´ ì•„ë‹Œ ì‚¬ëžŒì˜ ì„±ëª…ì„ ì½ì–´ì˜¤ì‹œì˜¤.
 
 SELECT
         emp_name, hobby
@@ -69,23 +69,23 @@ SELECT
   FROM temp
  WHERE hobby IS NOT NULL;
  
---4.TEMP Å×ÀÌºí¿¡¼­ Ãë¹Ì°¡ NULLÀÎ »ç¶÷Àº ¸ðµÎ HOBBY¸¦ ¡°¾øÀ½¡±ÀÌ¶ó°í °ªÀ» Ä¡È¯ÇÏ¿© °¡Á®¿À°í ³ª¸ÓÁö´Â ±×´ë·Î °ªÀ» ÀÐ¾î¿À½Ã¿À.
-SELECT ename, NVL(hobby, '¾øÀ½'), hobby FROM temp;
+--4.TEMP í…Œì´ë¸”ì—ì„œ ì·¨ë¯¸ê°€ NULLì¸ ì‚¬ëžŒì€ ëª¨ë‘ HOBBYë¥¼ â€œì—†ìŒâ€ì´ë¼ê³  ê°’ì„ ì¹˜í™˜í•˜ì—¬ ê°€ì ¸ì˜¤ê³  ë‚˜ë¨¸ì§€ëŠ” ê·¸ëŒ€ë¡œ ê°’ì„ ì½ì–´ì˜¤ì‹œì˜¤.
+SELECT ename, NVL(hobby, 'ì—†ìŒ'), hobby FROM temp;
 SELECT ename, NVL(comm, 0), hobby FROM temp;
 
---5.TEMPÀÇ ÀÚ·á Áß HOBBYÀÇ °ªÀÌ NULLÀÎ »ç¿øÀ» ¡®µî»ê¡¯À¸·Î Ä¡È¯ÇßÀ» ¶§ HOBBY°¡ ¡®µî»êÀÎ »ç¶÷ÀÇ ¼º¸íÀ» °¡Á®¿À´Â ¹®ÀåÀ» ÀÛ¼ºÇÏ½Ã¿À.
-SELECT ename FROM temp WHERE NVL(hobby, 'µî»ê')="µî»ê";
+--5.TEMPì˜ ìžë£Œ ì¤‘ HOBBYì˜ ê°’ì´ NULLì¸ ì‚¬ì›ì„ â€˜ë“±ì‚°â€™ìœ¼ë¡œ ì¹˜í™˜í–ˆì„ ë•Œ HOBBYê°€ â€˜ë“±ì‚°ì¸ ì‚¬ëžŒì˜ ì„±ëª…ì„ ê°€ì ¸ì˜¤ëŠ” ë¬¸ìž¥ì„ ìž‘ì„±í•˜ì‹œì˜¤.
+SELECT ename FROM temp WHERE NVL(hobby, 'ë“±ì‚°')="ë“±ì‚°";
 
---6.TEMPÀÇ ÀÚ·á Áß EMP_ID¿Í EMP_NAMEÀ» °¢°¢ ¡®»ç¹ø¡¯,¡¯¼º¸í¡¯À¸·Î Ç¥½ÃµÇ¾î DISPLAYµÇµµ·Ï COLUMN ALLIAS¸¦ ºÎ¿©ÇÏ¿© SELECT ÇÏ½Ã¿À.
-SELECT emp_id as "»ç¹ø", emp_name as "¼º¸í" FROM temp;
+--6.TEMPì˜ ìžë£Œ ì¤‘ EMP_IDì™€ EMP_NAMEì„ ê°ê° â€˜ì‚¬ë²ˆâ€™,â€™ì„±ëª…â€™ìœ¼ë¡œ í‘œì‹œë˜ì–´ DISPLAYë˜ë„ë¡ COLUMN ALLIASë¥¼ ë¶€ì—¬í•˜ì—¬ SELECT í•˜ì‹œì˜¤.
+SELECT emp_id as "ì‚¬ë²ˆ", emp_name as "ì„±ëª…" FROM temp;
 
---7.TEMPÀÇ ÀÚ·á¸¦ Á÷±Þ ¸í(LEV)¿¡ ASCENDINGÇÏ¸é¼­ °á°ú³»¿¡¼­ ´Ù½Ã »ç¹ø ¼øÀ¸·Î DESCENDINGÇÏ°Ô ÇÏ´Â ORDER BYÇÏ´Â ¹®ÀåÀ» ¸¸µé¾î º¸½Ã¿À.
+--7.TEMPì˜ ìžë£Œë¥¼ ì§ê¸‰ ëª…(LEV)ì— ASCENDINGí•˜ë©´ì„œ ê²°ê³¼ë‚´ì—ì„œ ë‹¤ì‹œ ì‚¬ë²ˆ ìˆœìœ¼ë¡œ DESCENDINGí•˜ê²Œ í•˜ëŠ” ORDER BYí•˜ëŠ” ë¬¸ìž¥ì„ ë§Œë“¤ì–´ ë³´ì‹œì˜¤.
 --SELECT emp_id, emp_name, lev FROM temp;
 SELECT emp_id, emp_name, lev FROM temp ORDER BY step asc, emp_id desc;
 
 
   
-SELECT ¿¬»êÀÌ °¡´ÉÇÏ´Ù FROM;
+SELECT ì—°ì‚°ì´ ê°€ëŠ¥í•˜ë‹¤ FROM;
 
 SELECT 1+1, 500-300, 2*5, 5/2
   FROM TEMP;
@@ -106,18 +106,18 @@ SELECT words_vc
   FROM t_letitbe
  WHERE MOD(seq_vc,2)=1;
  
--- ¿À¶óÅ¬¿¡¼­ Çüº¯È¯ÇÔ¼ö°¡ ÀÖ´Ù.
--- to_char() ³¯Â¥ -> ¹®ÀÚ, ¼ýÀÚ -> ¹®ÀÚ
--- to_number(¹®ÀÚ) -> ¼ýÀÚ
+-- ì˜¤ë¼í´ì—ì„œ í˜•ë³€í™˜í•¨ìˆ˜ê°€ ìžˆë‹¤.
+-- to_char() ë‚ ì§œ -> ë¬¸ìž, ìˆ«ìž -> ë¬¸ìž
+-- to_number(ë¬¸ìž) -> ìˆ«ìž
 
---ÇÔ¼ö(ÆÄ¶ó¹ÌÅÍ1, ÆÄ¶ó¹ÌÅÍ2)
---ÇÔ¼ö´Â ¸®ÅÏ°ªÀÌ ÀÖ´Ù.ÇÔ¼ö´Â ÆÄ¶ó¹ÌÅÍ¸¦ ¸ÂÃç¾ß ÇÑ´Ù.°¹¼ö¿Í Å¸ÀÔ ¸ðµÎ¸¦ ¸ÂÃç¾ßÇÑ´Ù.
+--í•¨ìˆ˜(íŒŒë¼ë¯¸í„°1, íŒŒë¼ë¯¸í„°2)
+--í•¨ìˆ˜ëŠ” ë¦¬í„´ê°’ì´ ìžˆë‹¤.í•¨ìˆ˜ëŠ” íŒŒë¼ë¯¸í„°ë¥¼ ë§žì¶°ì•¼ í•œë‹¤.ê°¯ìˆ˜ì™€ íƒ€ìž… ëª¨ë‘ë¥¼ ë§žì¶°ì•¼í•œë‹¤.
 
 SELECT MOD(to_number(seq_vc), 2) as "no" FROM t_letitbe;
 
--- Á¶°ÇÀý¿¡ »ç¿ëÇÏ´Â ÄÃ·³Àº ¹Ýµå½Ã ÁýÇÕ¿¡ ÀÖ´Â ÄÃ·³¸í¸¸ °¡´ÉÇÏ´Ù.
+-- ì¡°ê±´ì ˆì— ì‚¬ìš©í•˜ëŠ” ì»¬ëŸ¼ì€ ë°˜ë“œì‹œ ì§‘í•©ì— ìžˆëŠ” ì»¬ëŸ¼ëª…ë§Œ ê°€ëŠ¥í•˜ë‹¤.
 
--- ÀÎ¶óÀÎºä
+-- ì¸ë¼ì¸ë·°
 SELECT
         no
   FROM (
@@ -130,8 +130,8 @@ SELECT
 SELECT
         ename, sal
   FROM emp;
--- DECODE¹® °Ë»ö
--- Å©´ÙÀÛ´ÙX ifX ¿À·ÎÁö °°´Ù¸¸ °¡´É
+-- DECODEë¬¸ ê²€ìƒ‰
+-- í¬ë‹¤ìž‘ë‹¤X ifX ì˜¤ë¡œì§€ ê°™ë‹¤ë§Œ ê°€ëŠ¥
 SELECT
         DECODE(job, 'CLERK', sal, null)
   FROM emp;
@@ -162,19 +162,19 @@ SELECT deptno, DECODE(deptno, 10 , SUM(sal),
  GROUP BY deptno;
  
 -- Group by -> 
-SELECT AVG(sal) as "±Þ¿©Æò±Õ", SUM(sal) as "±Þ¿©ÇÕ°è", COUNT(empno) as "»ç¿ø¼ö" FROM emp;
+SELECT AVG(sal) as "ê¸‰ì—¬í‰ê· ", SUM(sal) as "ê¸‰ì—¬í•©ê³„", COUNT(empno) as "ì‚¬ì›ìˆ˜" FROM emp;
 
 SELECT AVG(sal) FROM emp;
 
 
--- distinct -> Áßº¹Á¦°Å ÇÔ¼ö
+-- distinct -> ì¤‘ë³µì œê±° í•¨ìˆ˜
 SELECT distinct (deptno)
   FROM emp;
 
-SELECT e.deptno, d.dname, SUM(e.sal) as "ºÎ¼­º° ±Þ¿© ÃÑÇÕ" FROM emp e, dept d GROUP BY e.deptno, d.dname, e.sal;
+SELECT e.deptno, d.dname, SUM(e.sal) as "ë¶€ì„œë³„ ê¸‰ì—¬ ì´í•©" FROM emp e, dept d GROUP BY e.deptno, d.dname, e.sal;
 
 
-SELECT emp.deptno, SUM(sal) as "ºÎ¼­º° ±Þ¿© ÃÑÇÕ" FROM emp , dept GROUP BY emp.deptno;
+SELECT emp.deptno, SUM(sal) as "ë¶€ì„œë³„ ê¸‰ì—¬ ì´í•©" FROM emp , dept GROUP BY emp.deptno;
 
 SELECT deptno, ename
   FROM emp
@@ -199,7 +199,7 @@ SELECT deptno, ename
 GROUP BY deptno, ename;
 
 
--- ºÎ¼­º°·Î ±Þ¿© ÇÕ°è¸¦ Ãâ·ÂÇÑ´Ù.
+-- ë¶€ì„œë³„ë¡œ ê¸‰ì—¬ í•©ê³„ë¥¼ ì¶œë ¥í•œë‹¤.
 SELECT deptno, NVL(SUM(DECODE(deptno, 10, sal), 0) deptno10),
                NVL(SUM(DECODE(deptno, 20, sal), 0) deptno20),
                NVL(SUM(DECODE(deptno, 30, sal), 0) deptno30),
@@ -233,10 +233,10 @@ SELECT ename , sal,
   FROM emp;
   
   
--- ¿ì¸®È¸»ç Á÷¿øÁß¿¡ ±Þ¿©°¡ 1000ÀÌ»óÀÌ°í 3000ÀÌÇÏÀÎ Á÷¿øµéÀÇ ¼º¸í, ±Þ¿©¾×À» Ãâ·ÂÇÏ´Â SQL¹®À» ÀÛ¼ºÇÏ½Ã¿À.
+-- ìš°ë¦¬íšŒì‚¬ ì§ì›ì¤‘ì— ê¸‰ì—¬ê°€ 1000ì´ìƒì´ê³  3000ì´í•˜ì¸ ì§ì›ë“¤ì˜ ì„±ëª…, ê¸‰ì—¬ì•¡ì„ ì¶œë ¥í•˜ëŠ” SQLë¬¸ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 SELECT ename, sal FROM emp WHERE sal BETWEEN 1000 AND 3000;
 
---Á¸ÀçÇÏÁö ¾ÊÀ¸¸é -1,Á¸ÀçÇÏ´Âµ¥ ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é 0  ÀÏÄ¡ÇÏ¸é 1? 
+--ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´ -1,ì¡´ìž¬í•˜ëŠ”ë° ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´ 0  ì¼ì¹˜í•˜ë©´ 1? 
 
 
 SELECT CASE WHEN mem_id=:id THEN 1
