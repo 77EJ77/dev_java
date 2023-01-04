@@ -1,0 +1,17 @@
+SELECT
+	컬럼명1, 컬럼명2, ..., ROUND(TO_CHAR()) --제공함수
+ FROM	집합1, 집합2, (SELECT문-인라인뷰)
+WHERE	컬럼명 비교연산자(true or false) 값
+   AND
+     OR (로우의 수 늘어난다. -> 경우의 수 늘어남 0 -> 속도 떨어진다.) -> 속도가 중요할 경우 되도록 쓰지 않는 편이..
+GROUP BY	컬럼명 - 주의 : 여기에 적힌 컬럼명만 SELECT절에 올 수 있다.
+(Having절 - GROUP BY절 사용에 대한 조건 검색시 사용 - where절 사용하면 망함)
+ORDER BY	컬럼명1 asc||desc, 컬럼명2 asc||desc, ...
+
+사용자 정의함수
+PL/SQL표준 -> 관계지향형 데이터베이스
+CREATE OR REPLACE FUNCTION func_XXXX()
+
+CREATE OR REPLACE PROCEDURE proc_XXX()
+
+CREATE OR REPLACE TRIGGER tri_XXX()

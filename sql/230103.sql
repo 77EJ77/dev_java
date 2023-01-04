@@ -266,3 +266,5 @@ SELECT
         ORDER BY result desc
         )
  WHERE rownum=1;
+ 
+ select * from emp;
