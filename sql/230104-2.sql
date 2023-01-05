@@ -1,8 +1,8 @@
-﻿-- HR
+-- HR
 
 SELECT * FROM employees;
 
--- jobID    AD_VP 10%   IT_PROG 15% ST_MAN 20%  나머지는 5%     출력:job_id 현재급여, 인상적용된 급여
+-- jobID    AD_VP 10%   IT_PROG 15%     ST_MAN 20%      나머지는 5%     출력:job_id 현재급여, 인상적용된 급여
 
 SELECT first_name||' '||last_name, job_id, salary, CASE
                             WHEN job_id='AD_VP' THEN salary*1.1

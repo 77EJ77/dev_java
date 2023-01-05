@@ -3,8 +3,8 @@ package dev_java.tables;
 import lombok.Builder;
 import lombok.Data;
 
-// @Data
-// @Builder
+ @Data
+ @Builder
 public class DeptVO /* extends Object */ { // Object -> 따로 명시되어있지 않아도 상속을 받고있는 상태.
   private int deptno;
   private String dname;

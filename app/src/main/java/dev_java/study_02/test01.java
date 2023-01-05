@@ -66,7 +66,7 @@ public class test01 implements ActionListener {
   AddressDialog aDialog = new AddressDialog();
 
   // 생성자
-  public AddressBook() {
+  public test01() {
 		initDisplay();
 	}
 

@@ -8,16 +8,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor // 디폴트 생성자 생성용
 @AllArgsConstructor // 변수를 전부 받는 생성자 생성용 -> 그 외의 생성자는 따로 작성해줘야 하는 모양.
-class CarVO {
+class CarVO2 {
   private int speed;
   private String carColor;
   private String wheelNum;
 
-  CarVO(int speed) {
+  CarVO2(int speed) {
     this.speed = speed;
   }
 
-  CarVO(int speed, String color) {
+  CarVO2(int speed, String color) {
     this.speed = speed;
     this.carColor = color;
   }

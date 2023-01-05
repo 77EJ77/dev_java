@@ -1,14 +1,15 @@
 package dev_java.basic3;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import dev_java.util.DBConnectionMgr;
 
@@ -40,6 +41,14 @@ public class ZipCodeSearchView extends JFrame implements ItemListener {
   Connection con = null;
   PreparedStatement pst = null;
   ResultSet rs = null;
+  // 테이블 생성
+  String[] cols = { "우편번호", "주소" };
+  String[][] data = new String[3][3];
+  DefaultTableModel dtm_zip = new DefaultTableModel(data, cols);
+  JTable jtb = new JTable(dtm_zip);
+  JTableHeader jth = jtb.getTableHeader();
+  JScrollPane jsp_zip = new JScrollPane(jtb, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+      JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
   // 생성자
   public ZipCodeSearchView() { // 게으른 인스턴스화 -> DB의 데이터값 가져오기위해 어쩔 수 없
@@ -162,12 +171,19 @@ public class ZipCodeSearchView extends JFrame implements ItemListener {
 
   // 화면처리부
   public void initDisplay() {
+    jth.setBackground(Color.LIGHT_GRAY);
+    jth.setFont(new Font("맑은고딕", Font.BOLD, 20));
+    jtb.getColumnModel().getColumn(0).setPreferredWidth(100);// 간격 - 우편번호
+    jtb.getColumnModel().getColumn(1).setPreferredWidth(300);// 간격 - 주소
+    // 그리드 색상 - 블랙
+    jtb.setGridColor(Color.BLACK);
     // 윈도우창 닫기 버튼 - 자원 회수하기
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     jp_north.add(com_zdo);
     jp_north.add(com_sigu);
     jp_north.add(com_dong);
     this.add("North", jp_north);
+    this.add("Center", jsp_zip);
     this.setSize(630, 400);
     this.setVisible(true);
   }

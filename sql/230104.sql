@@ -13,7 +13,7 @@ SELECT
   FROM  emp
 GROUP BY deptno;
 
--- ±×·ìÇÔ¼ö
+-- ê·¸ë£¹í•¨ìˆ˜
 SELECT
         MAX(ename), deptno
   FROM  emp
@@ -29,7 +29,7 @@ SELECT
   FROM  emp
 GROUP BY  deptno;
 
---HAVING -> GROUP BY¿¡ ´ëÇÑ Á¶°Ç¼³Á¤½Ã »ç¿ë
+--HAVING -> GROUP BYì— ëŒ€í•œ ì¡°ê±´ì„¤ì •ì‹œ ì‚¬ìš©
 SELECT
         deptno, AVG(sal)
   FROM  emp
@@ -38,31 +38,31 @@ HAVING avg(sal) >= 2000;
 
 
 -- 04-001.sql
--- ¹®1) ÁÖ´ç °­ÀÇ ½Ã°£°ú ~~~~  °°À» ¶§´Â ÀÏ¹Ý°ú¸ñ »ý·«ÇÏ¸é NULL ...~> ¸øµé¾úÀ½...
+-- ë¬¸1) ì£¼ë‹¹ ê°•ì˜ ì‹œê°„ê³¼ ~~~~  ê°™ì„ ë•ŒëŠ” ì¼ë°˜ê³¼ëª© ìƒëžµí•˜ë©´ NULL ...~> ëª»ë“¤ì—ˆìŒ...
 SELECT
-        DECODE(lec_time, lec_point, 'ÀÏ¹Ý°ú¸ñ')
+        DECODE(lec_time, lec_point, 'ì¼ë°˜ê³¼ëª©')
   FROM lecture;
 
 SELECT
-        DECODE(lec_time, lec_point, 'ÀÏ¹Ý°ú¸ñ', NULL)
+        DECODE(lec_time, lec_point, 'ì¼ë°˜ê³¼ëª©', NULL)
   FROM lecture;
 
 SELECT
-        DECODE(lec_time, lec_point, 'ÀÏ¹Ý°ú¸ñ', 'Æ¯º°°ú¸ñ')
+        DECODE(lec_time, lec_point, 'ì¼ë°˜ê³¼ëª©', 'íŠ¹ë³„ê³¼ëª©')
   FROM lecture;
   
--- ¹®2) ÁÖ°£ °­ÀÇ ½Ã°£°ú ÇÐÁ¡ÀÌ °°Àº °­ÀÇÀÇ ¼ýÀÚ¸¦ ¾Ë°í½Í´Ù.
+-- ë¬¸2) ì£¼ê°„ ê°•ì˜ ì‹œê°„ê³¼ í•™ì ì´ ê°™ì€ ê°•ì˜ì˜ ìˆ«ìžë¥¼ ì•Œê³ ì‹¶ë‹¤.
 SELECT
-        COUNT(DECODE(lec_time, lec_point, '¹¹')) as "°°Àº °­ÀÇ ¼ýÀÚ"
+        COUNT(DECODE(lec_time, lec_point, 'ë­')) as "ê°™ì€ ê°•ì˜ ìˆ«ìž"
   FROM lecture;
   
--- ¹®) °­ÀÇ ½Ã°£°ú ÇÐÁ¡ÀÌ °°À¸¸é 1À» ¹ÝÈ¯ÇÑ´Ù
+-- ë¬¸) ê°•ì˜ ì‹œê°„ê³¼ í•™ì ì´ ê°™ìœ¼ë©´ 1ì„ ë°˜í™˜í•œë‹¤
 SELECT
         DECODE(lec_time, lec_point, 1)
   FROM lecture;
 
--- NULLÀº ¸ð¸¥´Ù °áÁ¤µÇÁö ¾Ê¾Ò´Ù
--- SUMÇÒ ¼ö ÀÖ³ª? COUNT?
+-- NULLì€ ëª¨ë¥¸ë‹¤ ê²°ì •ë˜ì§€ ì•Šì•˜ë‹¤
+-- SUMí•  ìˆ˜ ìžˆë‚˜? COUNT?
 
 SELECT  lec_time, lec_point
         , DECODE(lec_time, lec_point, 1)
@@ -73,8 +73,8 @@ SELECT
   FROM  emp;
 
 SELECT
-        SUM(DECODE(job, 'CLERK', sal)) as "CLERKÀÇ ±Þ¿© ÇÕ"
-       ,COUNT(DECODE(job, 'CLERK', sal)) as "CLERKÀÇ ÀÎ¿ø"
+        SUM(DECODE(job, 'CLERK', sal)) as "CLERKì˜ ê¸‰ì—¬ í•©"
+       ,COUNT(DECODE(job, 'CLERK', sal)) as "CLERKì˜ ì¸ì›"
   FROM  emp;
 
 SELECT COUNT(*) FROM lecture
@@ -92,8 +92,8 @@ SELECT 2 FROM dual;
 
 SELECT 1, 2, 3 FROM dual;
 
--- ¹®3)timeÀÌ Å©¸é ½ÇÇè°ú¸ñ, point°¡ Å©¸é ±âÅ¸°ú¸ñ, µÑÀÌ °°À¸¸é ÀÏ¹Ý°ú¸ñÀ¸·Î µ¹·Á¹Þ°íÀÚ ÇÔ.
--- DECODE´Â °°´Ù¸¸ ºñ±³°¡´É
+-- ë¬¸3)timeì´ í¬ë©´ ì‹¤í—˜ê³¼ëª©, pointê°€ í¬ë©´ ê¸°íƒ€ê³¼ëª©, ë‘˜ì´ ê°™ìœ¼ë©´ ì¼ë°˜ê³¼ëª©ìœ¼ë¡œ ëŒë ¤ë°›ê³ ìž í•¨.
+-- DECODEëŠ” ê°™ë‹¤ë§Œ ë¹„êµê°€ëŠ¥
 
 -- HINT
 SELECT 120-10, (10-120), 0-0, 500-500
@@ -103,7 +103,7 @@ SELECT SIGN(120-10), SIGN(10-120), 0-0, 500-500, SIGN(10-25), SIGN(1+6), SIGN(40
   FROM dual;
 
 SELECT lec_time, lec_point,
-        DECODE(SIGN(lec_time-lec_point), 0, 'ÀÏ¹Ý°ú¸ñ', 1, '½ÇÇè°ú¸ñ', '±âÅ¸°ú¸ñ') as "°ú¸ñºÐ·ù"
+        DECODE(SIGN(lec_time-lec_point), 0, 'ì¼ë°˜ê³¼ëª©', 1, 'ì‹¤í—˜ê³¼ëª©', 'ê¸°íƒ€ê³¼ëª©') as "ê³¼ëª©ë¶„ë¥˜"
   FROM lecture;
 
 SELECT to_char(sysdate, 'DD') FROM dual;
@@ -113,26 +113,26 @@ SELECT to_char(sysdate, 'DAY') FROM dual;
 SELECT '04'||'21' FROM dual;
 
 SELECT
-        DECODE (to_char(sysdate, 'DAY'), '¿ù¿äÀÏ', '01'
-                                       , 'È­¿äÀÏ', '11'
-                                       , '¼ö¿äÀÏ', '21'
-                                       , '¸ñ¿äÀÏ', '31'
-                                       , '±Ý¿äÀÏ', '41'
-                                       , 'Åä¿äÀÏ', '51'
-                                       , 'ÀÏ¿äÀÏ', '61') FROM dual;
+        DECODE (to_char(sysdate, 'DAY'), 'ì›”ìš”ì¼', '01'
+                                       , 'í™”ìš”ì¼', '11'
+                                       , 'ìˆ˜ìš”ì¼', '21'
+                                       , 'ëª©ìš”ì¼', '31'
+                                       , 'ê¸ˆìš”ì¼', '41'
+                                       , 'í† ìš”ì¼', '51'
+                                       , 'ì¼ìš”ì¼', '61') FROM dual;
 
 SELECT to_char(sysdate, 'DD')
         ||
-        DECODE (to_char(sysdate, 'DAY'), '¿ù¿äÀÏ', '01'
-                                       , 'È­¿äÀÏ', '11'
-                                       , '¼ö¿äÀÏ', '21'
-                                       , '¸ñ¿äÀÏ', '31'
-                                       , '±Ý¿äÀÏ', '41'
-                                       , 'Åä¿äÀÏ', '51'
-                                       , 'ÀÏ¿äÀÏ', '61') as "¿À´ÃÀÇ ºñ¹ø"
+        DECODE (to_char(sysdate, 'DAY'), 'ì›”ìš”ì¼', '01'
+                                       , 'í™”ìš”ì¼', '11'
+                                       , 'ìˆ˜ìš”ì¼', '21'
+                                       , 'ëª©ìš”ì¼', '31'
+                                       , 'ê¸ˆìš”ì¼', '41'
+                                       , 'í† ìš”ì¼', '51'
+                                       , 'ì¼ìš”ì¼', '61') as "ì˜¤ëŠ˜ì˜ ë¹„ë²ˆ"
   FROM dual;
 
--- 1) ¿µ¾î °¡»ç¸¸ ³ª¿À°Ô ÇÏ±â
+-- 1) ì˜ì–´ ê°€ì‚¬ë§Œ ë‚˜ì˜¤ê²Œ í•˜ê¸°
 
 SELECT
         MOD(seq_vc, 2), seq_vc, words_vc
@@ -143,19 +143,19 @@ SELECT
       , DECODE(MOD(seq_vc, 2), 1, words_vc, NULL)
   FROM  t_letitbe
  WHERE MOD(seq_vc, 2) = 1; 
--- numÀ» where¹®¿¡ ³ÖÀ» ¼ö ¾øÀ½ ¾ø´Â ÄÃ·³ÀÌ´Ï±î.
+-- numì„ whereë¬¸ì— ë„£ì„ ìˆ˜ ì—†ìŒ ì—†ëŠ” ì»¬ëŸ¼ì´ë‹ˆê¹Œ.
 
--- numÀº º°ÄªÀÌÁö t_letitbe¿¡ Á¸ÀçÇÏ´Â ÄÃ·³ÀÌ ¾Æ´Ï´Ù
--- µû¶ó¼­ whereÀý¿¡ »ç¿ëÀÌ ºÒ°¡ÇÔ
--- ¹®Á¦ ÇØ°áÇÏ´Â ¹æ¹ý -> ÀÎ¶óÀÎºä¸¦ »ç¿ëÇÏ¸é °¡´ÉÇÏ´Ù.
--- ÀÎ¶óÀÎºä¸¦ »ç¿ëÇØ¼­ ÁýÇÕÀ» °¡°ø(ÄÃ·³, ·Î¿ì°ª-where) ÇÒ ¼ö ÀÖ´Ù.
+-- numì€ ë³„ì¹­ì´ì§€ t_letitbeì— ì¡´ìž¬í•˜ëŠ” ì»¬ëŸ¼ì´ ì•„ë‹ˆë‹¤
+-- ë”°ë¼ì„œ whereì ˆì— ì‚¬ìš©ì´ ë¶ˆê°€í•¨
+-- ë¬¸ì œ í•´ê²°í•˜ëŠ” ë°©ë²• -> ì¸ë¼ì¸ë·°ë¥¼ ì‚¬ìš©í•˜ë©´ ê°€ëŠ¥í•˜ë‹¤.
+-- ì¸ë¼ì¸ë·°ë¥¼ ì‚¬ìš©í•´ì„œ ì§‘í•©ì„ ê°€ê³µ(ì»¬ëŸ¼, ë¡œìš°ê°’-where) í•  ìˆ˜ ìžˆë‹¤.
 
 SELECT * FROM emp
 WHERE sal > 3000;
 
--- ÀÎ¶óÀÎºä´Â FROM µÚ¿¡ ¿À´Â SELECT ¹®À» ¸»ÇÑ´Ù.
--- ¾Æ·¡Ã³·³ ÀÛ¼ºÇÏ¸é º°ÄªÀ» Á¶°ÇÀý¿¡¼­ »ç¿ë °¡´ÉÇÔ
--- ±× ÄÃ·³¸íÀÌ ÇØ´ç Å×ÀÌºí¿¡ Á¸ÀçÇÏÁö ¾Ê´Â ÄÃ·³ÀÌ¾îµµ
+-- ì¸ë¼ì¸ë·°ëŠ” FROM ë’¤ì— ì˜¤ëŠ” SELECT ë¬¸ì„ ë§í•œë‹¤.
+-- ì•„ëž˜ì²˜ëŸ¼ ìž‘ì„±í•˜ë©´ ë³„ì¹­ì„ ì¡°ê±´ì ˆì—ì„œ ì‚¬ìš© ê°€ëŠ¥í•¨
+-- ê·¸ ì»¬ëŸ¼ëª…ì´ í•´ë‹¹ í…Œì´ë¸”ì— ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ì»¬ëŸ¼ì´ì–´ë„
 SELECT
         *
   FROM (
@@ -166,16 +166,16 @@ SELECT
         ) a
  WHERE a.num = 1;
 
--- 2) ÇÑ±Û °¡»ç¸¸ ³ª¿À°Ô ÇÏ±â
+-- 2) í•œê¸€ ê°€ì‚¬ë§Œ ë‚˜ì˜¤ê²Œ í•˜ê¸°
 SELECT
         MOD(seq_vc, 2) as "num", seq_vc
       , DECODE(MOD(seq_vc, 2), 0, words_vc, NULL)
   FROM  t_letitbe
  WHERE MOD(seq_vc, 2) = 1; 
 
--- 3) µÑ´Ù ³ª¿À°Ô ÇÏ±â
--- * : ¿ÍÀÏµå Ä«µå - ÁýÇÕ¿¡ Á¸ÀçÇÏ´Â ¸ðµç ÄÃ·³À» ¸»ÇÑ´Ù.
--- µ¥ÀÌÅÍ °ËÁõÀÌ³ª È®ÀÎ¿ëÀ¸·Î¸¸ »ç¿ëÇÏ¼¼¿ä ÀÚ¹Ù ÄÚµå¿¡¼­ »ç¿ëÇÏ¸é Á÷°üÀûÀÌÁö ¾Ê¾Æ¼­ ±ÇÀåÇÏÁö ¾Ê½À´Ï´Ù ITÇÁ·ÎÁ§Æ®´Â °ÅÀÇ ¸ðµÎ ´Ù Çù¾÷À¸·Î ÁøÇàµÇ¹Ç·Î ´Ù¸¥ °³¹ßÀÚ¸¦ À§ÇÑ ¹è·ÁÀÔ´Ï´Ù
+-- 3) ë‘˜ë‹¤ ë‚˜ì˜¤ê²Œ í•˜ê¸°
+-- * : ì™€ì¼ë“œ ì¹´ë“œ - ì§‘í•©ì— ì¡´ìž¬í•˜ëŠ” ëª¨ë“  ì»¬ëŸ¼ì„ ë§í•œë‹¤.
+-- ë°ì´í„° ê²€ì¦ì´ë‚˜ í™•ì¸ìš©ìœ¼ë¡œë§Œ ì‚¬ìš©í•˜ì„¸ìš” ìžë°” ì½”ë“œì—ì„œ ì‚¬ìš©í•˜ë©´ ì§ê´€ì ì´ì§€ ì•Šì•„ì„œ ê¶Œìž¥í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤ ITí”„ë¡œì íŠ¸ëŠ” ê±°ì˜ ëª¨ë‘ ë‹¤ í˜‘ì—…ìœ¼ë¡œ ì§„í–‰ë˜ë¯€ë¡œ ë‹¤ë¥¸ ê°œë°œìžë¥¼ ìœ„í•œ ë°°ë ¤ìž…ë‹ˆë‹¤
 
 SELECT
         seq_vc
@@ -205,18 +205,18 @@ ORDER BY to_number(seq_vc) asc;
 
 SELECT seq_vc, words_vc From t_letitbe;
 
--- ´ëÃ¼·Î ´õºíÄõÅ×ÀÌ¼Ç »ý·«°¡´ÉÇÏ³ª µÇµµ·ÏÀÌ¸é ºÙ¿©ÁÖÀÚ. Áß°£¿¡ ¶ç¾î¾²±â°¡ ÀÖ´Â °æ¿ì´Â »ý·« ºÒ°¡
+-- ëŒ€ì²´ë¡œ ë”ë¸”ì¿¼í…Œì´ì…˜ ìƒëžµê°€ëŠ¥í•˜ë‚˜ ë˜ë„ë¡ì´ë©´ ë¶™ì—¬ì£¼ìž. ì¤‘ê°„ì— ë„ì–´ì“°ê¸°ê°€ ìžˆëŠ” ê²½ìš°ëŠ” ìƒëžµ ë¶ˆê°€
 SELECT
-        empno »ç¿ø¹øÈ£,
-        empno as "»ç¿ø¹øÈ£",
-        empno "»ç¿ø¹øÈ£",
-        empno "»ç¿ø ¹øÈ£"
+        empno ì‚¬ì›ë²ˆí˜¸,
+        empno as "ì‚¬ì›ë²ˆí˜¸",
+        empno "ì‚¬ì›ë²ˆí˜¸",
+        empno "ì‚¬ì› ë²ˆí˜¸"
   FROM emp;
 
--- CASE..WHEN ±¸¹® ¿¬½À
--- ¾ÆÀÌµð°¡ Á¸ÀçÇÏ´ÂÁö ¸ÕÀú Ã¼Å©ÇØ º¸°í ¸¸ÀÏ Á¸ÀçÇÏ¸é ºñ¹øÀ» Ã¼Å©ÇÑ´Ù
--- Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì¶ó¸é -1 ¸®ÅÏÇÑ´Ù
--- ¾ÆÀÌµð´Â Á¸ÀçÇÏÁö¸¸ ºñ¹øÀÌ Æ²¸®¸é 0À» ¸®ÅÏÇÑ´Ù               ->ÀÚ¹ÙÀÇ ÈûÀ» ºô¸®Áö ¾Ê°í ¿À¶óÅ¬¸¸À» ÀÌ¿ëÇÏ¸é ¾÷¹«ÀÇ È¿À²¼ºÀÌ ³ô¾ÆÁö´Ï±î
+-- CASE..WHEN êµ¬ë¬¸ ì—°ìŠµ
+-- ì•„ì´ë””ê°€ ì¡´ìž¬í•˜ëŠ”ì§€ ë¨¼ì € ì²´í¬í•´ ë³´ê³  ë§Œì¼ ì¡´ìž¬í•˜ë©´ ë¹„ë²ˆì„ ì²´í¬í•œë‹¤
+-- ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°ë¼ë©´ -1 ë¦¬í„´í•œë‹¤
+-- ì•„ì´ë””ëŠ” ì¡´ìž¬í•˜ì§€ë§Œ ë¹„ë²ˆì´ í‹€ë¦¬ë©´ 0ì„ ë¦¬í„´í•œë‹¤               ->ìžë°”ì˜ íž˜ì„ ë¹Œë¦¬ì§€ ì•Šê³  ì˜¤ë¼í´ë§Œì„ ì´ìš©í•˜ë©´ ì—…ë¬´ì˜ íš¨ìœ¨ì„±ì´ ë†’ì•„ì§€ë‹ˆê¹Œ
 SELECT
         result
   FROM (
@@ -232,12 +232,12 @@ SELECT
 WHERE rownum = 1;
 
 
--- µµÀü¹®Á¦
--- tmepÀÇ ÀÚ·á¸¦ salary·Î ºÐ·ùÇÏ¿© 30,000,000ÀÌÇÏ´Â 'D',
--- 30,000,000 ÃÊ°ú 50,000,000ÀÌÇÏ´Â 'C'
--- 50,000,000 ÃÊ°ú 70,000,000ÀÌÇÏ´Â 'B'
--- 70,000,000 ÃÊ°ú´Â 'A'¶ó°í µî±ÞÀ» ºÐ·ùÇÏ¿© µî±Þº° ÀÎ¿ø¼ö¸¦
--- ¾Ë°í ½Í´Ù.
+-- ë„ì „ë¬¸ì œ
+-- tmepì˜ ìžë£Œë¥¼ salaryë¡œ ë¶„ë¥˜í•˜ì—¬ 30,000,000ì´í•˜ëŠ” 'D',
+-- 30,000,000 ì´ˆê³¼ 50,000,000ì´í•˜ëŠ” 'C'
+-- 50,000,000 ì´ˆê³¼ 70,000,000ì´í•˜ëŠ” 'B'
+-- 70,000,000 ì´ˆê³¼ëŠ” 'A'ë¼ê³  ë“±ê¸‰ì„ ë¶„ë¥˜í•˜ì—¬ ë“±ê¸‰ë³„ ì¸ì›ìˆ˜ë¥¼
+-- ì•Œê³  ì‹¶ë‹¤.
  SELECT 
          CASE
             WHEN salary <= 30000000 THEN 'D'
@@ -256,62 +256,62 @@ WHERE rownum = 1;
 
 
 
--- ¹®Á¦1
--- ¿µÈ­ Æ¼ÄÏÀ» ¹ÞÀ» ¼ö ÀÖ´Â »ç¶÷ÀÇ ¸í´Ü°ú ÇöÀç °¡Áö°í ÀÖ´Â Æ÷ÀÎÆ®, ¿µÈ­ Æ¼ÄÏÀÇ Æ÷ÀÎÆ® ±×¸®°í ±× Æ¼ÄÏÀ» »ç¿ëÇÑ ÈÄ ³²Àº ¿¹»ó Æ÷ÀÎÆ®¸¦ Ãâ·ÂÇÏ½Ã¿À.
+-- ë¬¸ì œ1
+-- ì˜í™” í‹°ì¼“ì„ ë°›ì„ ìˆ˜ ìžˆëŠ” ì‚¬ëžŒì˜ ëª…ë‹¨ê³¼ í˜„ìž¬ ê°€ì§€ê³  ìžˆëŠ” í¬ì¸íŠ¸, ì˜í™” í‹°ì¼“ì˜ í¬ì¸íŠ¸ ê·¸ë¦¬ê³  ê·¸ í‹°ì¼“ì„ ì‚¬ìš©í•œ í›„ ë‚¨ì€ ì˜ˆìƒ í¬ì¸íŠ¸ë¥¼ ì¶œë ¥í•˜ì‹œì˜¤.
 SELECT
-        m.point_nu as "È¸¿øÀÌ º¸À¯ÇÑ Æ÷ÀÎÆ®"
-       ,g.point_nu as "»óÇ°ÀÇ Æ÷ÀÎÆ®"
-       ,m.point_nu-g.point_nu as "Æ÷ÀÎÆ® ÀÜ¾×"
+        m.point_nu as "íšŒì›ì´ ë³´ìœ í•œ í¬ì¸íŠ¸"
+       ,g.point_nu as "ìƒí’ˆì˜ í¬ì¸íŠ¸"
+       ,m.point_nu-g.point_nu as "í¬ì¸íŠ¸ ìž”ì•¡"
   FROM t_giftmem m, t_giftpoint g
- WHERE  g.name_vc='¿µÈ­Æ¼ÄÏ' and m.point_nu-g.point_nu > 0
+ WHERE  g.name_vc='ì˜í™”í‹°ì¼“' and m.point_nu-g.point_nu > 0
  
  SELECT
-        m.point_nu as "È¸¿øÀÌ º¸À¯ÇÑ Æ÷ÀÎÆ®"
-       ,g.point_nu as "»óÇ°ÀÇ Æ÷ÀÎÆ®"
-       ,m.point_nu-g.point_nu as "Æ÷ÀÎÆ® ÀÜ¾×"
+        m.point_nu as "íšŒì›ì´ ë³´ìœ í•œ í¬ì¸íŠ¸"
+       ,g.point_nu as "ìƒí’ˆì˜ í¬ì¸íŠ¸"
+       ,m.point_nu-g.point_nu as "í¬ì¸íŠ¸ ìž”ì•¡"
   FROM t_giftmem m, t_giftpoint g
--- ¹®ÀÚ¿­ ºñ±³½Ã¿¡´Â '' / as ""
--- Ä«Å¸½Ã¾ÈÀÇ °ö
+-- ë¬¸ìžì—´ ë¹„êµì‹œì—ëŠ” '' / as ""
+-- ì¹´íƒ€ì‹œì•ˆì˜ ê³±
 
--- ¹®Á¦2 ***** Çª´Â Áß
--- ±èÀ¯½Å¾¾°¡ º¸À¯ÇÏ°í ÀÖ´Â ¸¶ÀÏ¸®Áö Æ÷ÀÎÆ®·Î ¾òÀ» ¼ö ÀÖ´Â »óÇ° Áß °¡Àå Æ÷ÀÎÆ®°¡ ³ôÀº °ÍÀº ¹«¾ùÀÎ°¡?
+-- ë¬¸ì œ2 ***** í‘¸ëŠ” ì¤‘
+-- ê¹€ìœ ì‹ ì”¨ê°€ ë³´ìœ í•˜ê³  ìžˆëŠ” ë§ˆì¼ë¦¬ì§€ í¬ì¸íŠ¸ë¡œ ì–»ì„ ìˆ˜ ìžˆëŠ” ìƒí’ˆ ì¤‘ ê°€ìž¥ í¬ì¸íŠ¸ê°€ ë†’ì€ ê²ƒì€ ë¬´ì—‡ì¸ê°€?
 SELECT MAX()
   FROM  (
-            SELECT  g.name_vc as "»óÇ°¸í"
-                   ,g.point_nu as "»óÇ° Æ÷ÀÎÆ®"
+            SELECT  g.name_vc as "ìƒí’ˆëª…"
+                   ,g.point_nu as "ìƒí’ˆ í¬ì¸íŠ¸"
               FROM t_giftmem m, t_giftpoint g
-             WHERE m.name_vc = '±èÀ¯½Å' AND m.point_nu-g.point_nu > 0
+             WHERE m.name_vc = 'ê¹€ìœ ì‹ ' AND m.point_nu-g.point_nu > 0
         )
 
 
--- °ü°è ÇüÅÂ¿¡´Â
--- 1:1 -> »ç¿ø - °¡Á·Å×ÀÌºí
--- 1:N -> »ç¿ø - ºÎ¼­Å×ÀÌºí
--- N:N -> È¸¿ø - »óÇ° / ÇÐ»ý - ±³°ú¸ñ...
--- : ¾÷¹«¿¡ ´ëÇÑ Á¤ÀÇ°¡ ´ú µÈ °æ¿ìÀÌ´Ù.Ä«Å¸½Ã¾ÈÀÇ °öÀÌ ¹ß»ýÇÏ¹Ç·Î Á¶ÀÎÇÏ¸é ¾ÈµÈ´Ù.(ÀÇ¹Ì ¾ø´Â °ª-¾²·¹±â °ª)
--- ERD¸¦ º¼ ¼ö ÀÖ¾î¾ß ÇÔ
--- n:nÀÇ °ü°è¸¦ 1:nÀ¸·Î ¸¸µé¾î ÁÖ´Â ±³Â÷¿£Æ¼Æ¼(ÇàÀ§¿£Æ¼Æ¼)¸¦ Ã£´Â °ÍÀÌ Áß¿äÇÏ´Ù.
+-- ê´€ê³„ í˜•íƒœì—ëŠ”
+-- 1:1 -> ì‚¬ì› - ê°€ì¡±í…Œì´ë¸”
+-- 1:N -> ì‚¬ì› - ë¶€ì„œí…Œì´ë¸”
+-- N:N -> íšŒì› - ìƒí’ˆ / í•™ìƒ - êµê³¼ëª©...
+-- : ì—…ë¬´ì— ëŒ€í•œ ì •ì˜ê°€ ëœ ëœ ê²½ìš°ì´ë‹¤.ì¹´íƒ€ì‹œì•ˆì˜ ê³±ì´ ë°œìƒí•˜ë¯€ë¡œ ì¡°ì¸í•˜ë©´ ì•ˆëœë‹¤.(ì˜ë¯¸ ì—†ëŠ” ê°’-ì“°ë ˆê¸° ê°’)
+-- ERDë¥¼ ë³¼ ìˆ˜ ìžˆì–´ì•¼ í•¨
+-- n:nì˜ ê´€ê³„ë¥¼ 1:nìœ¼ë¡œ ë§Œë“¤ì–´ ì£¼ëŠ” êµì°¨ì—”í‹°í‹°(í–‰ìœ„ì—”í‹°í‹°)ë¥¼ ì°¾ëŠ” ê²ƒì´ ì¤‘ìš”í•˜ë‹¤.
 
--- Á¦1Á¤±ÔÈ­ : Áßº¹µÇ´Â °ªÀ» °ü¸®ÇÏÁö ¾Ê´Â´Ù -> Áßº¹±ÝÁö
--- Á¦2Á¤±ÔÈ­ : º¹ÇÕÅ° ¸ðµÎ¿¡ Á¾¼ÓÀûÀÎ ÄÃ·³¸í¸¸ ¾´´Ù. -> ±³Â÷¿£Æ¼Æ¼ ¶Ç´Â ÇàÀ§¿£Æ¼Æ¼
--- Á¦3Á¤±ÔÈ­ : Å×ÀÌºí¿¡ °ü°èÇüÅÂ·Î FK°¡ Á¸ÀçÇÏ´Â °æ¿ì PK°¡ ¾Æ´Ï FK¿¡ Á¾¼ÓÀûÀÎ ÄÃ·³ÀÌ Á¸ÀçÇÏ¸é ¾ÈµÊ
--- Natural JOIN // OUTER JOIN // SELF JOIN ¸¸ Àß°É¸é µÊ
+-- ì œ1ì •ê·œí™” : ì¤‘ë³µë˜ëŠ” ê°’ì„ ê´€ë¦¬í•˜ì§€ ì•ŠëŠ”ë‹¤ -> ì¤‘ë³µê¸ˆì§€
+-- ì œ2ì •ê·œí™” : ë³µí•©í‚¤ ëª¨ë‘ì— ì¢…ì†ì ì¸ ì»¬ëŸ¼ëª…ë§Œ ì“´ë‹¤. -> êµì°¨ì—”í‹°í‹° ë˜ëŠ” í–‰ìœ„ì—”í‹°í‹°
+-- ì œ3ì •ê·œí™” : í…Œì´ë¸”ì— ê´€ê³„í˜•íƒœë¡œ FKê°€ ì¡´ìž¬í•˜ëŠ” ê²½ìš° PKê°€ ì•„ë‹ˆ FKì— ì¢…ì†ì ì¸ ì»¬ëŸ¼ì´ ì¡´ìž¬í•˜ë©´ ì•ˆë¨
+-- Natural JOIN // OUTER JOIN // SELF JOIN ë§Œ ìž˜ê±¸ë©´ ë¨
 
 
 -- CASE...WHEN
 
 SELECT * FROM zipcode_t;
 
--- ´ëºÐ·ù // ÁßºÐ·ù // ¼ÒºÐ·ù ÄÁ¼Á
+-- ëŒ€ë¶„ë¥˜ // ì¤‘ë¶„ë¥˜ // ì†Œë¶„ë¥˜ ì»¨ì…‰
 
-SELECT 'ÀüÃ¼' FROM dual
+SELECT 'ì „ì²´' FROM dual
 UNION ALL
 SELECT zdo FROM zipcode_t group by zdo;
 
--- order by Àý°ú union all °°ÀÌ ¾µ ¼ö ¾ø´ÂµíÇÔ
+-- order by ì ˆê³¼ union all ê°™ì´ ì“¸ ìˆ˜ ì—†ëŠ”ë“¯í•¨
 
--- ÀÎ¶óÀÎºä
-SELECT 'ÀüÃ¼' zdo FROM dual
+-- ì¸ë¼ì¸ë·°
+SELECT 'ì „ì²´' zdo FROM dual
 UNION ALL
 SELECT zdo 
   FROM (
@@ -320,7 +320,7 @@ SELECT zdo
             order by zdo asc
          );
 
-SELECT 'ÀüÃ¼' sigu FROM dual
+SELECT 'ì „ì²´' sigu FROM dual
 UNION ALL
 SELECT sigu 
   FROM (
@@ -330,7 +330,7 @@ SELECT sigu
             order by sigu asc
         );
 
-SELECT 'ÀüÃ¼' FROM dual
+SELECT 'ì „ì²´' FROM dual
 UNION ALL
 SELECT dong 
   FROM (

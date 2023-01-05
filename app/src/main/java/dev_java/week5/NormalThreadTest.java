@@ -1,6 +1,6 @@
 package main.java.dev_java.week5;
 
-public class NomalThreadTest {
+public class NormalThreadTest {
   /*
    * 자바에서는 애플리케이션 내부의 모든 스레드가 종료되지 않으면 JVM이 종료되지 않는다.
    * main메소드의 스레드가 종료되었지만 중간에 생성한 스레드가 종료될때 까지 애플리케이션은 종료되지 않는다.
